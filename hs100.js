@@ -1,19 +1,3 @@
-/**
- *  hs100.js
- *
- *  Copyright 2016 Dan Logan
- *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- *  in compliance with the License. You may obtain a copy of the License at:
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed
- *  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License
- *  for the specific language governing permissions and limitations under the License.
- *
- */
-
 var sock = require('net');
 var http = require('http');
 var url = require('url');
@@ -29,18 +13,19 @@ function onRequest(request, response){
   //var pathname = url.parse(request.url).pathname;
   var command = request.headers["x-hs100-command"];
   var deviceIP = request.headers["x-hs100-ip"];
-  var hs100 = new hs100api({host:deviceIP});
+  var hs100 = new hs100api.Client().getPlug({host:deviceIP});
   var msg = '';
+  var date = new Date();
   switch(command) {
     case "on":
-      console.log("on");
-      msg = 'you turned ' + deviceIP + ' on';
+      msg = date + ': ON command sent to ' + deviceIP;
+      console.log(msg);
       hs100.setPowerState(true);
       response.end(msg);
       break;
     case "off":
-      console.log("off");
-      msg = 'you turned ' + deviceIP + ' off';
+      msg = date + ': OFF commmand sent to  ' + deviceIP;
+      console.log(msg);
       hs100.setPowerState(false);
       response.end(msg);
       break;

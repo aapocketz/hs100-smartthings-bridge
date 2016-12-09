@@ -5,7 +5,7 @@
   "scripts": {
   },
   "dependencies": {
-    "hs100-api":"^0.2.0"
+    "hs100-api":"*"
   },
   "private":true
 }
