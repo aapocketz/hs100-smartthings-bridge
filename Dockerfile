@@ -8,7 +8,7 @@
 #6. curl -H "x-hs100-command:on" -H "x-hs100-ip:<plugip>" -D - <gatewayip>:8083
 
 
-FROM dhibit/rpi-baseimage:latest
+FROM neomindryan/rpi-baseimage-docker
 #FROM phusion/baseimage:latest
 
 CMD ["/sbin/my_init"]
