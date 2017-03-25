@@ -8,8 +8,8 @@
 #6. curl -H "x-hs100-command:on" -H "x-hs100-ip:<plugip>" -D - <gatewayip>:8083
 
 
-
-FROM phusion/baseimage:latest
+FROM dhibit/rpi-baseimage:latest
+#FROM phusion/baseimage:latest
 
 CMD ["/sbin/my_init"]
 
